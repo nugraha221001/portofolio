@@ -78,7 +78,8 @@ export function HeroSection() {
               aria-hidden="true"
               className="absolute -inset-4 rounded-3xl border border-primary/20"
             />
-            <div className="relative aspect-[4/5] w-64 overflow-hidden rounded-2xl border border-border bg-card sm:w-72 lg:w-80">
+            {/* PERBAIKAN: aspect-[4/5] diubah menjadi aspect-4/5 */}
+            <div className="relative aspect-4/5 w-64 overflow-hidden rounded-2xl border border-border bg-card sm:w-72 lg:w-80">
               <Image
                 src="/Lesy-profile.jpeg"
                 alt="Portrait of Lesy Nugraha"

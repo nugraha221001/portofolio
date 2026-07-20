@@ -106,14 +106,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         )}
       </div>
       
-      {/* 4. PENGATURAN FOTO: Menggunakan tinggi tetap yang fleksibel secara responsif */}
+      {/* 4. PENGATURAN FOTO: Menggunakan h-62.5 dan sm:h-100 sesuai saran linter */}
       {post.image && (
-        <div className="relative mb-10 w-full h-[250px] sm:h-[400px] overflow-hidden rounded-2xl border border-border bg-muted">
+        <div className="relative mb-10 w-full h-62.5 sm:h-100 overflow-hidden rounded-2xl border border-border bg-muted">
           <Image 
             src={post.image} 
             alt={post.title} 
             fill 
-            // Silakan ganti 'object-cover' menjadi 'object-contain' jika ingin foto portrait terlihat utuh tanpa kepotong sisi atas/bawahnya!
             className="object-cover" 
             sizes="(max-width: 768px) 100vw, 48rem"
             priority

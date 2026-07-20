@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link' // <-- KITA TAMBAHKAN LINK DARI NEXT.JS
+import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { client } from '../sanity/lib/client'
 
@@ -36,7 +36,8 @@ export async function BlogSection() {
             key={post.title}
             className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
           >
-            <div className="relative aspect-[16/9] overflow-hidden">
+            {/* PERBAIKAN: Mengganti aspect-[16/9] menjadi aspect-video */}
+            <div className="relative aspect-video overflow-hidden">
               <Image
                 src={post.image || '/placeholder.svg'}
                 alt={post.title || "Blog Thumbnail"}
