@@ -2,6 +2,7 @@ import { MapPin, Mail, X } from 'lucide-react'
 import {
   InstagramIcon,
   WhatsappIcon,
+  TiktokIcon,
 } from '@/components/brand-icons'
 
 export function SiteFooter() {
@@ -50,6 +51,15 @@ export function SiteFooter() {
             className="inline-flex size-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
           >
             <X className="size-4" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@agaagar_" 
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok profile"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+          >
+            <TiktokIcon className="size-4" />
           </a>
         </div>
 

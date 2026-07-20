@@ -51,3 +51,16 @@ export function WhatsappIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
+
+export function TiktokIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2-1.74 2.89 2.89 0 0 1 2.89-2.89 2.88 2.88 0 0 1 1.54.45v-3.6a6.38 6.38 0 0 0-1.54-.19 6.34 6.34 0 0 0 0 12.67 6.34 6.34 0 0 0 6.34-6.34V8.58a8.3 8.3 0 0 0 4.93 1.63v-3.48a4.91 4.91 0 0 1-1.74-.04Z" />
+    </svg>
+  )
+}
