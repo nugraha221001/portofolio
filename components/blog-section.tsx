@@ -1,24 +1,20 @@
 import Image from 'next/image'
+import Link from 'next/link' // <-- KITA TAMBAHKAN LINK DARI NEXT.JS
 import { ArrowUpRight } from 'lucide-react'
+import { client } from '../sanity/lib/client'
 
-const POSTS = [
-  {
-    image: '/blog-frontend.png',
-    category: 'Development',
-    title: 'Building Responsive UIs That Scale',
-    excerpt:
-      'Lessons learned crafting component-driven layouts that stay clean and maintainable as projects grow.',
-  },
-  {
-    image: '/blog-seo.png',
-    category: 'Data & SEO',
-    title: 'Turning Search Trends Into Strategy',
-    excerpt:
-      'How I use Python and trend analysis to translate raw search data into actionable SEO decisions.',
-  },
-]
+export async function BlogSection() {
+  // Kita tambahkan penarik "slug" di dalam jaring data ini
+  const posts = await client.fetch(`
+    *[_type == "post"] | order(publishedAt desc) {
+      title,
+      "slug": slug.current, 
+      "category": coalesce(categories[0]->title, "Uncategorized"),
+      "excerpt": pt::text(body),
+      "image": mainImage.asset->url
+    }
+  `, {}, { next: { revalidate: 0 } })
 
-export function BlogSection() {
   return (
     <section id="blog" className="mx-auto max-w-6xl px-6 py-24">
       <div className="mb-12 max-w-2xl">
@@ -35,7 +31,7 @@ export function BlogSection() {
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
-        {POSTS.map((post) => (
+        {posts.map((post: any) => (
           <article
             key={post.title}
             className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
@@ -43,7 +39,7 @@ export function BlogSection() {
             <div className="relative aspect-[16/9] overflow-hidden">
               <Image
                 src={post.image || '/placeholder.svg'}
-                alt=""
+                alt={post.title || "Blog Thumbnail"}
                 fill
                 sizes="(max-width: 640px) 100vw, 32rem"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -53,17 +49,20 @@ export function BlogSection() {
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">
                 {post.category}
               </span>
-              <h3 className="mt-2 text-lg font-semibold">{post.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {post.excerpt}
+              <h3 className="mt-2 text-lg font-semibold line-clamp-2">{post.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                {post.excerpt || "No description available."}
               </p>
-              <button
-                type="button"
+              
+              {/* TOMBOL BUTTON KITA UBAH MENJADI LINK */}
+              <Link
+                href={post.slug ? `/blog/${post.slug}` : '#'}
                 className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-primary"
               >
                 Read More
                 <ArrowUpRight className="size-4" />
-              </button>
+              </Link>
+              
             </div>
           </article>
         ))}

@@ -60,7 +60,7 @@ export function HeroSection() {
               <LinkedinIcon className="size-4" />
             </a>
             <a
-              href="https://github.com/agaagar22"
+              href="https://github.com/nugraha221001"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub profile"
