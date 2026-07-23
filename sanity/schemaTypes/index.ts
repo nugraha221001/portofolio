@@ -3,9 +3,9 @@ import { blockContentType } from './blockContentType'
 import { categoryType } from './categoryType'
 import { postType } from './postType'
 import { authorType } from './authorType'
-import { blockImage } from './blockImage' // 1. Import file baru
+// HAPUS import blockImage dari sini
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  // 2. Tambahkan blockImage ke dalam array ini
-  types: [blockContentType, categoryType, postType, authorType, blockImage], 
+  // HAPUS blockImage dari dalam array
+  types: [blockContentType, categoryType, postType, authorType], 
 }

@@ -6,7 +6,7 @@ import { PortableText, PortableTextComponents } from '@portabletext/react'
 
 const myPortableTextComponents: PortableTextComponents = {
   types: {
-    blockImage: ({ value }) => {
+    image: ({ value }) => {
       if (!value?.asset?._ref) return null;
       
       return (
@@ -126,6 +126,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   src={post.author.image} 
                   alt={post.author.name} 
                   fill 
+                  sizes="36px"
                   className="object-cover"
                 />
               </div>

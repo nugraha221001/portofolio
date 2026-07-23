@@ -1,4 +1,4 @@
-import {defineType, defineArrayMember} from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
 
 export const blockContentType = defineType({
   title: 'Block Content',
@@ -40,10 +40,18 @@ export const blockContentType = defineType({
         ],
       },
     }),
-    // 👇 INI BAGIAN YANG SUDAH KITA BERSIHKAN (LANGKAH 3C)
-    // Sekarang dia memanggil skema mandiri 'blockImage' yang tidak akan error saat diketik
+    // 👇 GUNAKAN TIPE 'image' NATIVE LANGSUNG DI SINI 👇
     defineArrayMember({
-      type: 'blockImage',
+      type: 'image', 
+      options: { hotspot: true },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          description: 'Penting untuk SEO dan Aksesibilitas.',
+        }
+      ]
     }),
   ],
 })
